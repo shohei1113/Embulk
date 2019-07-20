@@ -1,0 +1,35 @@
+in:
+  type: file
+  path_prefix: ./datasets/ratings.csv
+  parser:
+    charset: UTF-8
+    newline: CRLF
+    type: csv
+    delimiter: ','
+    quote: '"'
+    escape: '"'
+    trim_if_not_quoted: false
+    skip_header_lines: 1
+    allow_extra_columns: false
+    allow_optional_columns: false
+    columns:
+    - {name: id, type: long}
+    - {name: restaurant_id, type: long}
+    - {name: user_id, type: string}
+    - {name: total, type: long}
+    - {name: food, type: long, format: '%Y-%m-%d %H:%M:%S'}
+    - {name: service, type: long}
+    - {name: atmosphere, type: long}
+    - {name: cost_performance, type: long}
+    - {name: title, type: string}
+    - {name: body, type: string}
+    - {name: purpose, type: long}
+    - {name: created_on, type: timestamp, format: '%Y-%m-%d %H:%M:%S'}
+out:
+  type: mysql
+  host: 127.0.0.1
+  user: root
+  password: Shohei@1113
+  database: testdb
+  table: ratings
+  mode: merge
